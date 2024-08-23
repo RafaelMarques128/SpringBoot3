@@ -1,4 +1,4 @@
-package med.voll.api.domain.consulta.validacoes;
+package med.voll.api.domain.consulta.validacoes.agendamento;
 
 import med.voll.api.domain.ValidacaoException;
 import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
@@ -23,4 +23,5 @@ public class ValidadorMedicoAtivo implements ValidadorAgendamentoDeConsulta {
             throw new ValidacaoException("Consulta não pode ser agendada com médico excluído");
         }
     }
+
 }

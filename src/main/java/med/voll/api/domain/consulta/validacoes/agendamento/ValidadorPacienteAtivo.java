@@ -1,4 +1,4 @@
-package med.voll.api.domain.consulta.validacoes;
+package med.voll.api.domain.consulta.validacoes.agendamento;
 
 import med.voll.api.domain.ValidacaoException;
 import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
@@ -13,14 +13,9 @@ public class ValidadorPacienteAtivo implements ValidadorAgendamentoDeConsulta {
     private PacienteRepository repository;
 
     public void validar(DadosAgendamentoConsulta dados) {
-        //escolha do medico opcional
-        if (dados.idMedico() == null) {
-            return;
-        }
-
         var pacienteEstaAtivo = repository.findAtivoById(dados.idPaciente());
         if (!pacienteEstaAtivo) {
-            throw new ValidacaoException("Consulta não pode ser agendada com médico excluído");
+            throw new ValidacaoException("Consulta não pode ser agendada com paciente excluído");
         }
     }
 }
